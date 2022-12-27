@@ -52,7 +52,7 @@
 	{
 		const continueButton = document.querySelector('.continue-button');
 		continueButton.addEventListener('click', (e) => {
-			location.href = '/';
+			location.reload();
 		});
 	}
 })();
