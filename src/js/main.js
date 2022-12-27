@@ -34,9 +34,16 @@
 
 		inputs.forEach((input) => {
 			input.addEventListener('input', (e) => {
-				input.classList.remove('error');
-				const validationGroup = input.closest('.validation-group');
-				validationGroup.classList.remove('error');
+				// Clear errors.
+				{
+					input.classList.remove('error');
+					const validationGroup = input.closest('.validation-group');
+					validationGroup.classList.remove('error');
+				}
+
+				_updateCardGraphics();
+
+
 			});
 
 			input.addEventListener('focus', (e) => {
@@ -55,4 +62,31 @@
 			location.href = location.href;
 		});
 	}
+
+
+	function _updateCardGraphics() {
+		const numberOut = document.querySelector('.card-front__number');
+		const nameOut = document.querySelector('.card-front__name');
+		const expirationOut = document.querySelector('.card-front__expiration');
+		const cvcOut = document.querySelector('.card-back__cvc');
+
+		let numberInValue = document.querySelector('input[name="number"]').value; {
+			numberInValue = numberInValue.trim() == "" ? '0000 0000 0000 0000' : numberInValue;
+		}
+		let nameInValue = document.querySelector('input[name="name"]').value; {
+			nameInValue = nameInValue.trim() == "" ? 'Jane Appleseed' : nameInValue;
+		}
+		let expirationInValue = document.querySelector('input[name="mm"]').value + '/' + document.querySelector('input[name="yy"]').value; {
+			expirationInValue = expirationInValue.trim() == "/" ? '00/00' : expirationInValue;
+		}
+		let cvcInValue = document.querySelector('input[name="cvc"]').value; {
+			cvcInValue = cvcInValue.trim() == "" ? '000' : cvcInValue;
+		}
+
+		numberOut.textContent = numberInValue;
+		nameOut.textContent = nameInValue;
+		expirationOut.textContent = expirationInValue;
+		cvcOut.textContent = cvcInValue;
+	}
+	_updateCardGraphics();
 })();
