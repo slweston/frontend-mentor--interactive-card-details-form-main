@@ -1,0 +1,329 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap');
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+img {
+	display: block;
+	max-width: 100%;
+}
+
+:root {
+	--lineargradient-active-input-border: linear-gradient(#6448fe, #600594);
+	--clr-red-input-errors: #ff5252;
+	--clr-white: #ffffff;
+	--clr-light-grayish-violet: #dedddf;
+	--clr-dark-grayish-violet: #8e8593;
+	--clr-very-dark-violet: #21092f;
+	--ff-body: 'Space Grotesk', sans-serif;
+}
+
+$mediaMinWidth_desktop: 1300px;
+$footerMaxHeight: 2.5rem;
+
+body,
+input,
+button {
+	font-family: var(--ff-body);
+}
+
+body {
+	background: url('../images/bg-main-mobile.png');
+	background-repeat: no-repeat;
+	background-size: cover;
+
+	@media screen and (min-width: $mediaMinWidth_desktop) {
+		background-image: url('../images/bg-main-desktop.png');
+		background-size: 483px;
+		background-position-x: 0;
+	}
+}
+
+main {
+	overflow: auto;
+
+	.container {
+		height: calc(100vh - $footerMaxHeight);
+		min-width: 375px;
+		max-width: 375px;
+		margin-inline: auto;
+		display: grid;
+		position: relative;
+
+		@media screen and (min-width: $mediaMinWidth_desktop) {
+			max-width: $mediaMinWidth_desktop;
+		}
+
+		.inner-container {
+			.main-grid {
+
+				.card-front,
+				.card-back {
+					width: 285px;
+					height: 157px;
+					border-radius: 0.5rem;
+					background-size: cover;
+					position: absolute;
+
+					@media screen and (min-width: $mediaMinWidth_desktop) {
+						width: 447px;
+						height: 245px;
+					}
+				}
+
+				.card-front {
+					background-image: url('../images/bg-card-front.png');
+					color: var(--clr-white);
+					padding: 1.25rem;
+					padding-bottom: 0;
+					display: grid;
+					top: 7.55rem;
+					left: 1rem;
+					z-index: 1;
+
+					@media screen and (min-width: $mediaMinWidth_desktop) {
+						padding: 1.75rem 2rem;
+						top: 10.9rem;
+						left: 5.9rem;
+					}
+
+					&__logo {
+						width: 53px;
+
+						@media screen and (min-width: $mediaMinWidth_desktop) {
+							width: 84px;
+						}
+					}
+
+					&__number {
+						font-size: 1.15rem;
+						letter-spacing: 0.105em;
+						margin-top: 1.2rem;
+
+						@media screen and (min-width: $mediaMinWidth_desktop) {
+							font-size: 1.75rem;
+							letter-spacing: 0.119em;
+							margin-top: 3.97rem;
+						}
+
+					}
+
+					&__name-expiration {
+						font-size: 0.6rem;
+						letter-spacing: 0.1em;
+						display: flex;
+						justify-content: space-between;
+
+						@media screen and (min-width: $mediaMinWidth_desktop) {
+							font-size: 0.85rem;
+							letter-spacing: 0.16em;
+							margin-top: 1.7rem;
+						}
+					}
+
+					&__name {
+						text-transform: uppercase;
+					}
+
+				}
+
+				.card-back {
+					background-image: url('../images/bg-card-back.png');
+					top: 2rem;
+					left: 4.5rem;
+
+					@media screen and (min-width: $mediaMinWidth_desktop) {
+						top: 28.5rem;
+						left: 11.75rem;
+					}
+
+					&__cvc {
+						font-size: 0.65rem;
+						color: var(--clr-white);
+						position: absolute;
+						top: 70px;
+						right: 38px;
+
+						@media screen and (min-width: $mediaMinWidth_desktop) {
+							font-size: 0.85rem;
+							letter-spacing: 0.17em;
+							top: 112px;
+							right: 57px;
+						}
+					}
+				}
+
+				.confirm-button,
+				.continue-button {
+					font-size: 1.1rem;
+					letter-spacing: 0.015rem;
+					border: none;
+					border-radius: 0.5rem;
+					background: var(--clr-very-dark-violet);
+					color: var(--clr-white);
+					height: 53px;
+					width: 100%;
+					cursor: pointer;
+
+					@media screen and (min-width: $mediaMinWidth_desktop) {
+						margin-top: 0.55rem;
+					}
+				}
+
+				form,
+				.thank-you-panel {
+					display: grid;
+					width: 375px;
+					padding: 5.69rem 1.5rem 2.75rem;
+					margin-top: 236px;
+					background: var(--clr-white);
+
+					@media screen and (min-width: $mediaMinWidth_desktop) {
+						height: 463px;
+						margin-top: 172px;
+						margin-left: calc(50% + 112px);
+						margin-right: calc(50% - 150px);
+						padding-inline: 0;
+					}
+				}
+
+				.thank-you-panel {
+					grid-template-rows: 115px 52px 70px 1fr;
+					justify-items: center;
+					display: none;
+
+					h2 {
+						font-size: 1.7rem;
+						letter-spacing: 0.2rem;
+						text-transform: uppercase;
+					}
+
+					p {
+						font-size: 1.1326rem;
+						color: var(--clr-dark-grayish-violet);
+					}
+				}
+
+				form {
+					label {
+						font-size: 0.7825rem;
+						letter-spacing: 0.1025rem;
+						text-transform: uppercase;
+						display: grid;
+						grid-template-rows: auto 1fr;
+						margin-bottom: 1.2rem;
+
+						@media screen and (min-width: $mediaMinWidth_desktop) {
+							font-size: 0.75rem;
+							letter-spacing: 0.125rem;
+							margin-bottom: 1.6rem;
+						}
+
+						input {
+							font-size: 1.125rem;
+							width: 100%;
+							height: 50px;
+							margin-top: 0.5rem;
+							padding: 0.65rem 0.95rem;
+							border: 1px solid var(--clr-light-grayish-violet);
+							border-radius: 0.5rem;
+
+							@media screen and (min-width: $mediaMinWidth_desktop) {
+								font-size: 1.129rem;
+								height: 45px;
+								padding-inline: 0.9rem;
+							}
+
+							&::placeholder {
+								color: var(--clr-dark-grayish-violet);
+							}
+						}
+
+						.validation-message {
+							letter-spacing: initial;
+							text-transform: initial;
+							color: var(--clr-red-input-errors);
+							margin-top: 0.5rem;
+							display: none;
+						}
+					}
+
+					label.error {
+						input.error {
+							border-color: var(--clr-red-input-errors);
+						}
+
+						.validation-message {
+							display: unset;
+						}
+					}
+
+					.form__mm-yy-cvc {
+						display: grid;
+						grid-template-columns: 0.965fr 1.035fr;
+						gap: 0.75rem;
+						margin-bottom: 0.5rem;
+
+						@media screen and (min-width: $mediaMinWidth_desktop) {
+							gap: 1.20rem;
+
+							input[name="cvc"] {
+								width: 191px;
+							}
+						}
+
+						.form__mm-yy {
+							display: flex;
+							gap: 0.7rem;
+
+							@media screen and (min-width: $mediaMinWidth_desktop) {
+								gap: 0.65rem;
+
+								input {
+									width: 80px;
+								}
+							}
+						}
+					}
+				}
+			}
+
+			.main-grid.thank-you {
+				form {
+					display: none;
+				}
+
+				.thank-you-panel {
+					display: grid;
+				}
+			}
+		}
+	}
+}
+
+
+
+footer {
+	font-size: 0.8rem;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	padding: 0.25rem;
+	text-align: center;
+	height: $footerMaxHeight;
+	display: grid;
+	place-content: center;
+	background: #fff;
+
+	h1 {
+		all: unset;
+	}
+
+	a {
+		color: blue;
+	}
+}
